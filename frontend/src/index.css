@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+
+/* Design tokens. Chart colours follow a CVD-validated categorical order:
+   forecast = blue, actual = orange, bias-adjusted = aqua; uncertainty band is the blue sequential ramp. */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --surface-2: #f3f2ee;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #6f6d68;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.1);
+  --s-forecast: #2a78d6;
+  --s-actual: #eb6834;
+  --s-expected: #1baf7a;
+  --band: #b7d3f6;
+  --firm: #184f95;
+  --neg: #e34948;
+  --pos: #2a78d6;
+  --good: #006300;
+  --critical: #d03b3b;
+  --ghost: #c3c2b7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --surface-2: #232321;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --muted: #9a988f;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.1);
+    --s-forecast: #3987e5;
+    --s-actual: #d95926;
+    --s-expected: #199e70;
+    --band: #1c4a80;
+    --firm: #86b6ef;
+    --neg: #e66767;
+    --pos: #3987e5;
+    --good: #0ca30c;
+    --critical: #e66767;
+    --ghost: #4a4a46;
+  }
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--border);
+  --color-accent: var(--s-forecast);
+  --color-actual: var(--s-actual);
+  --color-expected: var(--s-expected);
+  --color-good: var(--good);
+  --color-critical: var(--critical);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+html,
+body {
+  background: var(--page);
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Recharts: keep chart chrome recessive. */
+.recharts-cartesian-grid line {
+  stroke: var(--grid);
+}
+.recharts-cartesian-axis-tick-value {
+  fill: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: var(--axis);
+}
+.recharts-label {
+  fill: var(--muted);
+  font-size: 11px;
+}
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
+}

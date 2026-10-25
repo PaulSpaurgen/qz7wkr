@@ -52,7 +52,6 @@ These figures use the EPEX deadline of 09:20 UK. With Nord Pool's 09:50 deadline
 │   ├── scripts/fetch_snapshot.py   Re-downloads the snapshot from Elexon
 │   ├── tests/                 pytest: metrics, forecast selection, API, Elexon client (mocked)
 │   ├── Dockerfile
-│   ├── pyproject.toml         ruff config
 │   └── requirements-dev.txt
 ├── frontend/
 │   ├── src/
@@ -70,7 +69,7 @@ These figures use the EPEX deadline of 09:20 UK. With Nord Pool's 09:50 deadline
 ├── docker-compose.yml         api (FastAPI) + web (nginx) → http://localhost:8080
 ├── vercel.json                static frontend + Python function routing
 ├── requirements.txt           backend runtime dependencies (also used by Vercel)
-├── pytest.ini
+├── pytest.ini, ruff.toml      test + lint config
 └── .github/workflows/ci.yml   lint, test, build, docker build
 ```
 
@@ -105,7 +104,7 @@ npm run dev                           # http://localhost:5173
 
 ```bash
 pytest                                 # backend: 35 tests
-ruff check backend api
+ruff check .
 cd frontend && npm run lint && npm test && npm run build
 ```
 
